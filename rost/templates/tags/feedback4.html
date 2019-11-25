@@ -1,0 +1,133 @@
+{% load static %}
+
+         <div class="panel panel-default">
+                    <div class="panel-body">
+                        <h2 class="page-header">Записаться на прием</h2>
+                        
+            <form class="form" role="form" action="{% url 'aboutform' %}" method="post" id="feedback4">
+                {% csrf_token %}
+            <div class="col-lg-6 col-sm-12 name" style="">
+            <div class="control-group form-group">
+            <label class="sr-only" for="name">Имя</label>
+            {{ form3.name }}
+            </div>
+            </div>
+            <div class="col-lg-6 col-sm-12 tel" style="">
+            <div class="control-group form-group">
+            <label class="sr-only" for="phone">Телефон</label>
+            {{ form3.phone }}
+            </div>
+            </div>
+                <div class="col-lg-12 col-sm-12" style="padding-left: 0px; padding-right: 0">
+                <div class="control-group form-group">
+		<label class="sr-only" for="need_product">Услуга</label>
+                <div class="input">
+            {{ form3.need_product }}
+		</div>
+		</div>
+                <div class="col-lg-6 col-sm-12 time-inp">
+                <div class="control-group form-group">
+                <div class="input">
+			                    {{ form3.time }}
+                </div>
+                </div>
+                    </div>
+                    <div class="col-lg-6 col-sm-12 data">
+                <div class="control-group form-group">
+                    <label class="sr-only" for="date">Дата</label>
+                  {{ form3.date }}
+                </div>
+                 </div>
+                    </div>
+                <div class="col-lg-12 col-sm-12">
+                  <label>
+                    <input class="checkbox" type="checkbox" name="checkbox-test" checked="" id="check_feed4">
+                    <span class="checkbox-custom"></span>
+                    <span class="label"><a href="#" data-toggle="modal" data-target="#agreementModal">Согласие на обработку персональных данных</a></span>
+                </label>
+            <button type="submit" class="btn btn-primary" id="subb4">Записаться на консультацию
+                <i class="fa fa-angle-double-right" aria-hidden="true"></i></button>
+
+                    </div>
+            </form>
+            <p style="color:red; text-align: center" id="err4"></p>
+        <p style="color:dodgerblue; text-align: center; font-size: x-large" id="confirm4"></p>
+             </div>
+                </div>
+
+
+
+
+<script>
+
+ function getCookie(name) {
+        var cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            var cookies = document.cookie.split(';');
+            for (var i = 0; i < cookies.length; i++) {
+                var cookie = jQuery.trim(cookies[i]);
+                // Does this cookie string begin with the name we want?
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+ function csrfSafeMethod(method) {
+    // these HTTP methods do not require CSRF protection
+    return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+}
+
+
+    $(function(){
+
+       $('#subb4').click(function(event){
+
+           event.preventDefault();
+           var csrftoken = getCookie('csrftoken');
+
+           var $feedback_form = $('#feedback4');
+
+           var namecb1 = $('#fname4').val();
+           var phonecb1 = $('#fphone4').val();
+           var time = $('#ftime4').val();
+           var date = $('#datepicker').val();
+           var chbox1 = document.getElementById('check_feed4');
+
+           var flag = true;
+           if(!chbox1.checked){
+
+               $('#err4').append('Необходимо согласие на обработку персональных данных<br>');
+               flag = false;
+           }
+           if(namecb1 ===''){
+
+               $('#err4').append('Необходимо заполнить поле Имя<br>');
+               flag = false;
+           }
+           if(phonecb1 ===''){
+                         event.preventDefault();
+               $('#err4').append('Необходимо заполнить поле Телефон<br>');
+               flag = false;
+           }
+               if(flag){
+
+           $.ajax({
+               beforeSend: function(xhr, settings) {
+        if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+            xhr.setRequestHeader("X-CSRFToken", csrftoken);
+            }
+        },
+            method: 'post',
+            url: $feedback_form.attr('action'),
+            data: $feedback_form.serialize(),
+
+        });
+        $('#confirm4').append('Ваше сообщение успешно отправлено!<br>');
+        $feedback_form.addClass("hidden");
+       }
+       });
+    });
+</script>

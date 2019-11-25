@@ -1,0 +1,17 @@
+{% load wagtailimages_tags wagtailcore_tags %}
+
+{% for testy in items|slice:":2" %}
+    {% image testy.image fill-500x300 as img%}
+<blockquote>
+                            <div class="row">
+                            <div class="col-md-4">
+<img src="{{ img.url }}" class="img-responsive" alt="{{ testy.name }}">
+ <h4>{{ testy.name }}</h4>
+ </div>
+                            <div class="col-md-8">
+{{ testy.text|richtext }}
+         </div>
+                                </div>
+                        </blockquote>
+                        <hr>
+{% endfor %}

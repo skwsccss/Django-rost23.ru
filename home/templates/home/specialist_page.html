@@ -1,0 +1,123 @@
+{% extends "base.html" %}
+{% load form_tags static wagtailimages_tags wagtailcore_tags %}
+{% block extra_styles %}
+    <link href="{% static "rost/dist/css/lightbox.css" %}" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+{% endblock %}
+{% block extra_scripts %}
+    <script src="{% static "rost/dist/js/lightbox-plus-jquery.min.js" %}"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+  <script>
+  $( function() {
+    $( "#datepicker" ).datepicker();
+  } );
+  </script>
+{% endblock %}
+{% block content %}
+<div class="container-fluid">
+
+        <!-- Page Heading/Breadcrumbs -->
+        <div class="row">
+            <div class="parallax">
+                <div class="container">
+                 <h1 class="page-header">Наши специалисты
+                </h1>
+                     <ol class="breadcrumb">
+                    <li><a href="/">Главная</a>
+                        <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                    </li>
+                         <li><a href="/specialist/">Специалисты</a>
+                    </li>
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                    <li class="active">{{ page.name }}</li>
+                </ol>
+                </div>
+            </div>
+
+        </div>
+        <!-- /.row -->
+
+
+        <!-- Team Members -->
+         <div class="row">
+            <div class="container-fluid">
+           <div class="top_contact_block">
+<div class="clearfix row">
+	<div class="left col-md-6 col-sm-12">
+    <div class="description_block">
+				<h3 class="name">{{ page.name }}</h3>
+				<p><i>{{ page.profession }}</i></p>
+				
+                    {{ page.text|richtext }}
+				</div>
+	</div>
+	<div class="right col-md-6 col-sm-12">
+        {% image page.image fill-412x550 as img%}
+					<img src="{{ img.url }}">
+					<h3>{{ page.name }}</h3>
+    {% if page.experience %}<p class="">{{ page.experience }}</p>{% endif %}</div>
+	</div>
+	</div>
+</div>
+
+        </div>
+            </div>
+        <!-- /.row -->
+<div class="row">
+    <div class="container">
+                {% if 'nazarova' in request.path %}
+                  {% include 'home/spec_footer.html' with id=506688 translit='nazarova' %}
+                {% elif 'stroeva-elena' in request.path %}
+                  {% include 'home/spec_footer.html' with id=12034 translit='stroeva' %}
+                {% elif 'nam-larisa' in request.path %}
+                  {% include 'home/spec_footer.html' with id=101554 translit='nam' %}
+                {% elif 'gomzyan' in request.path %}
+                  {% include 'home/spec_footer.html' with id=506687 translit='gomcyan' %}
+                {% elif 'gayanova' in request.path %}
+                  {% include 'home/spec_footer.html' with id=373633 translit='gaynanova' %}
+                {% endif %}
+    
+               
+                <div class="col-md-12">
+				<p><b>Наличие сертификатов:</b></p>
+				<ul class="list4a">
+                    {% for item in page.sertificates.all %}
+				<li>{{ item.sertificate }}</li>
+				    {% endfor %}
+				</ul>
+				</div>
+
+       </div>
+</div>
+<!-- Our License -->
+        <div class="row">
+            <div class="container">
+            <div class="col-lg-12">
+                <h2 class="page-header">Лицензии и Сертификаты</h2>
+            </div>
+            {% for item in page.sertificates.all %}
+                {% image item.sertificate_image width-1000 as sert%}
+                {% if item.sertificate_image %}
+				<div class="col-sm-4 col-xs-6 lisence">
+                <a class="example-image-link" href="{{ sert.url }}" data-lightbox="example-set" data-title="">
+                    <img class="border img-responsive example-image" src="{{ sert.url }}" alt="" /></a>
+            </div>
+                {% endif %}
+				    {% endfor %}
+
+        </div>
+            </div>
+ <div class="row form-connect">
+     <div class="container">
+          <div class="col-md-4 col-sx-12 contact-img">
+             <img class="img-responsive customer-img" src="{% static "rost/images/doctor-consultant.png" %}" alt="">
+         </div>
+         <div class="col-md-7 col-sx-12 contact-block">
+         {% feedback4 %}
+                </div>
+             </div>
+
+     </div>
+</div>
+{% endblock %}

@@ -1,0 +1,9 @@
+{% load wagtailimages_tags wagtailcore_tags %}
+{% for testy in items %}
+    {% image testy.image fill-500x300 as img%}
+<div class="item {% if forloop.first %}active{% endif %}">
+ <a href="#"><img src="{{ img.url }}" class="img-responsive" alt="Отзыв1"></a>
+ <h4>{{ testy.name }}</h4>
+ {{ testy.text|richtext }}
+</div>
+{% endfor %}

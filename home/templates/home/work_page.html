@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+{% load static wagtailcore_tags wagtailimages_tags %}
+{% block extra_styles %}
+<link href="{% static "rost/css/twentytwenty.css" %}" rel="stylesheet" type="text/css" />
+{% endblock %}
+{% block jquery_bottom %}
+<script
+  src="https://code.jquery.com/jquery-3.2.1.js"></script>
+{% endblock %}
+{% block extra_scripts %}
+
+    <script src="{% static "rost/js/jquery.event.move.js" %}"></script>
+<script src="{% static "rost/js/jquery.twentytwenty.js" %}"></script>
+    <script>
+    $(function(){
+      $(".twentytwenty-container[data-orientation!='vertical']").twentytwenty({default_offset_pct: 0.7});
+      $(".twentytwenty-container[data-orientation='vertical']").twentytwenty({default_offset_pct: 0.3, orientation: 'vertical'});
+    });
+    </script>
+{% endblock %}
+{% block content %}
+<div class="container-fluid">
+
+        <!-- Page Heading/Breadcrumbs -->
+        <div class="row">
+            <div class="parallax">
+                <div class="container">
+                 <h1 class="page-header">Наши работы</h1>
+                     <ol class="breadcrumb">
+                    <li><a href="/">Главная</a>
+                    </li>
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                    <li class="active">Наши работы</li>
+                </ol>
+                </div>
+            </div>
+
+        </div>
+        <!-- /.row -->
+        <!-- Projects Row -->
+        <div class="row">
+        <div class="container portfolio-list">
+            {% if work_page_images %}
+                {% for img in  work_page_images%}
+                    {% image img.image1 width-1000 as slide1 %}
+                    {% image img.image2 width-1000 as slide2 %}
+ <div class="row" style="margin-top: 2em;">
+
+      <div class="col-md-5">
+        <div class="twentytwenty-container">
+          <img src="{{ slide1.url }}" />
+          <img src="{{ slide2.url }}" />
+        </div>
+      </div>
+     <div class="col-md-7">
+        <h3>{{ img.h3_name }}</h3>
+        {{ img.text|richtext }}
+      </div>
+    </div>
+                {% endfor %}
+            {% endif %}
+
+        <!-- Pagination -->
+        <div class="row text-center">
+            <div class="col-lg-12">
+            <ul class="pagination">
+                {% if work_page_images.has_previous %}
+      <li><a href="?page={{ work_page_images.previous_page_number }}">Назад</a></li>
+    {% else %}
+      <li class="disabled"><span>Назад</span></li>
+    {% endif %}
+    {% for i in work_page_images.paginator.page_range %}
+      {% if work_page_images.number == i %}
+        <li class="active"><span>{{ i }} <span class="sr-only"></span></span></li>
+      {% else %}
+        <li><a href="?page={{ i }}">{{ i }}</a></li>
+      {% endif %}
+    {% endfor %}
+    {% if work_page_images.has_next %}
+      <li><a href="?page={{ work_page_images.next_page_number }}">Вперёд</a></li>
+    {% else %}
+      <li class="disabled"><span>Вперёд</span></li>
+    {% endif %}
+            </ul>
+            </div>
+        </div>
+
+            <!-- /.row -->
+</div>
+        </div>
+    </div>
+{% endblock %}

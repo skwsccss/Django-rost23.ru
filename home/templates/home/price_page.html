@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+{% load wagtailcore_tags wagtailimages_tags %}
+{% block content %}
+<div class="container-fluid">
+
+         <!-- Page Heading/Breadcrumbs -->
+        <div class="row">
+            <div class="parallax">
+                <div class="container">
+                 <h1 class="page-header">Прайс-лист
+                </h1>
+                     <ol class="breadcrumb">
+                    <li><a href="/">Главная</a>
+                    </li>
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                    <li class="active">Прайс-лист</li>
+                </ol>
+                </div>
+            </div>
+
+        </div>
+        <!-- /.row -->
+<!---Tables---->
+<div class="row">
+    <div class="container price-wrap">
+<div class="col-md-12 col-sm-12 col-xs-12 content-md">
+<div class="item-views accordion  image_right price">
+				<div class="group-content">
+					<div id="bx_3218110189_" class="tab-pane active">
+
+{% if page.categories %}
+                        {% with categories=page.categories.all %}
+    {% if categories %}
+        {% for category in categories %}
+<div class="accordion-type-2">
+<div class="item wti" id="bx_3218110189_236">
+<div class="accordion-head" data-toggle="collapse" data-parent="#accordion" href="#accordion{{ forloop.counter }}_">
+<a href="#">{{ category.name }}<i class="fa fa-angle-down"></i></a>
+<div class="price-pay" data-temp="1">
+Цена&nbsp;<b>от 500 р.</b>
+	</div>
+	</div>
+<div id="accordion{{ forloop.counter }}_" class="panel-collapse {% if forloop.first %}in {% else %}collapse{% endif %}">
+	<div class="accordion-body">
+		<div class="row">
+	<div class="col-md-12">
+<div class="accordion-body">
+<table class="table table-striped">
+											<thead>
+											<tr><th>Услуга</th><th>Стоимость (в рублях)</th></tr>
+											</thead>
+											<tbody>
+                                            {% for one in category.items.all %}
+																							<tr>
+													<td>{{ one.name }}</td>
+													<td>{{ one.price }}</td>
+												</tr>
+                                                {% endfor %}
+											</tbody>
+										</table>
+									</div>
+
+								</div>
+																											</div>
+												</div>
+											</div>
+										</div>
+									</div>
+{% endfor %}
+{% endif %}
+{% endwith %}
+                    {% endif %}
+
+                    		</div>
+									</div>
+
+					</div> <br>
+<div class="col-md-4 col-sx-12 price-img">
+    {% image page.image width-400 as img%}
+ <img alt="Прайс-лист стоматологии" src="{{ img.url }}" title="Прайс-лист стоматологии" align="left" class="img-responsive">
+ <h2>Стоматология "РОСТ"</h2>
+</div>
+<div class="col-md-8 col-sx-12">
+{{ page.text|richtext }}
+</div>
+<!---tables end--->
+        <!-- Content Row -->
+
+        <!-- /.row -->
+</div>
+</div>
+    </div>
+{% endblock %}

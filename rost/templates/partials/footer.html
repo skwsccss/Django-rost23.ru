@@ -1,0 +1,98 @@
+{% load static %}
+<footer class="test">
+            <div class="row">
+                <div class="container">
+                <div class="col-lg-4 logo-footer">
+                    <img src="{% static "rost/images/logo-footer.png" %}" alt="Стоматологическая клиника - Рост" title="Стоматологическая клиника - Рост">
+                </div>
+                <div class="col-lg-4 icons-block">
+                    <a href="https://www.instagram.com/rost.krasnodar/" target="_blank"><img src="{% static "rost/images/social/iconmonstr-instagram-1-240.png" %}" alt="instagram" title="instagram"></a>
+                </div>
+                <div class="col-lg-4 contact-footer">
+                    <span id="tele3" class="phone-footer"><a href="tel:+78003503074">8 (800) 350-30-74</a></span><br>
+                    <span class="email-footer"><a href="mailto:23.rost@mail.ru">23.rost@mail.ru</a></span>
+                </div>
+            </div>
+           </div>
+            <div class="row copiright">
+                <div class="container">
+                    <div class="col-md-6 col-sx-12">
+                        <p>Стоматология РОСТ © 2018 Все права защищены</p>
+
+                    </div>
+                </div>
+            </div>
+            <script>
+            $(window).scroll(function() {
+    $('.mov').each(function(){
+      var imagePos = $(this).offset().top;
+      var topOfWindow = $(window).scrollTop();
+      if (imagePos < topOfWindow+450) {
+        $(this).addClass('fadeInLeft');
+      }
+    });
+  });</script>
+ <!-- Yandex.Metrika counter_first -->
+<script type="text/javascript" >
+    (function (d, w, c) {
+        (w[c] = w[c] || []).push(function() {
+            try {
+                w.yaCounter46216458 = new Ya.Metrika({
+                    id:46216458,
+                    clickmap:true,
+                    trackLinks:true,
+                    accurateTrackBounce:true,
+                    webvisor:true
+                });
+            } catch(e) { }
+        });
+
+        var n = d.getElementsByTagName("script")[0],
+            s = d.createElement("script"),
+            f = function () { n.parentNode.insertBefore(s, n); };
+        s.type = "text/javascript";
+        s.async = true;
+        s.src = "https://mc.yandex.ru/metrika/watch.js";
+
+        if (w.opera == "[object Opera]") {
+            d.addEventListener("DOMContentLoaded", f, false);
+        } else { f(); }
+    })(document, window, "yandex_metrika_callbacks");
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/46216458" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+<!-- Yandex.Metrika counter_second -->
+<script type="text/javascript" >
+(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+ym(52663414, "init", {
+clickmap:true,
+trackLinks:true,
+accurateTrackBounce:true,
+webvisor:true
+});
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/52663414" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<script type="text/javascript" >
+    ym(53211223, "init", {
+         clickmap:true,
+         trackLinks:true,
+         accurateTrackBounce:true,
+         webvisor:true,
+         trackHash:true
+    });
+ </script>
+ <noscript><div><img src="https://mc.yandex.ru/watch/53211223" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-135538560-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-135538560-1');
+</script>
+        </footer>

@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+{% load form_tags static wagtailimages_tags wagtailcore_tags %}
+{% block extra_styles %}
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+{% endblock %}
+{% block extra_scripts %}
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script>
+  $( function() {
+    $( "#datepicker" ).datepicker();
+  } );
+  </script>
+{% endblock %}
+{% block content %}
+<div class="container-fluid">
+
+        <!-- Page Heading/Breadcrumbs -->
+        <div class="row">
+            <div class="parallax">
+                <div class="container">
+                 <h1 class="page-header">Наши специалисты
+                </h1>
+                     <ol class="breadcrumb">
+                    <li><a href="/">Главная</a>
+                    </li>
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                    <li class="active">Все специалисты</li>
+                </ol>
+                </div>
+            </div>
+
+        </div>
+        <!-- /.row -->
+
+
+        <!-- Team Members -->
+        <div class="row">
+		<div class="container specialist">
+            <div class="col-lg-12">
+                <h2 class="page-header">Наши <span>Специалисты</span></h2>
+            </div>
+            {% for item in page.get_children %}
+                {% image item.specific.image fill-412x550 as img%}
+            <div class="col-md-4 text-center">
+                <div class="thumbnail">
+                    <img class="img-responsive" src="{{ img.url }}" alt="{{ item.specific.name }}">
+                    <div class="caption">
+                        <h3>{{ item.specific.name }}<br>
+                            <small>{{ item.specific.profession }}</small>
+                        </h3>
+                        {{ item.specific.text|truncatewords_html:15|richtext}}
+              <button type="button" class="btn btn-default btn-more">
+                  <a href="{% pageurl item %}">
+                Подробнее
+                <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                </a>
+              </button>
+
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+                </div>
+		</div>
+        <!-- /.row -->
+
+ <div class="row form-connect">
+     <div class="container">
+          <div class="col-md-4 col-sx-12 contact-img">
+             <img class="img-responsive customer-img" src="{% static "rost/images/doctor-consultant.png" %}" alt="">
+         </div>
+         <div class="col-md-7 col-sx-12 contact-block">
+         {% feedback4 %}
+                </div>
+             </div>
+
+     </div>
+{% endblock %}

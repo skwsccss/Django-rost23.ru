@@ -1,0 +1,181 @@
+{% extends 'base.html' %}
+{% load form_tags static wagtailcore_tags wagtailimages_tags main_tags %}
+{% block extra_styles %}
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+{% endblock %}
+{% block extra_scripts %}
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script>
+  $( function() {
+    $( "#datepicker" ).datepicker();
+  } );
+  </script>
+{% endblock %}
+{% block content %}
+<div class="container-fluid">
+
+       <!-- Page Heading/Breadcrumbs -->
+        <div class="row">
+            <div class="parallax">
+                <div class="container">
+                 <h1 class="page-header">{{ self.title }}
+                </h1>
+                     <ol class="breadcrumb">
+                    <li><a href="/">Главная</a>
+                    </li>
+                         <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                         <li><a href="/all-services/">Все услуги</a>
+                    </li>
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                         <li><a href="{% pageurl page.get_parent %}">{{ page.get_parent.title }}</a>
+                    </li>
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                    <li class="active">{{ self.title }}</li>
+                </ol>
+                </div>
+            </div>
+
+        </div>
+        <!-- /.row -->
+
+        <!-- Image Header -->
+        <div class="row service-block">
+            <div class="container">
+            <div class="col-lg-2 service-img">
+                {% image page.image width-400 as img%}
+                <img class="img-responsive" src="{{ img.url }}" alt="">
+                <h2>{{ self.title }}</h2>
+            </div>
+            <div class="col-lg-10 service-descr">
+                {{ page.text|richtext }}
+            </div>
+            <div class="col-lg-12 advantages row">
+                <div class="col-md-4 col-xs-12 inner-bl">
+                    <div class="head-gr im1">
+                    <i class="fa fa-plus fa-2x" aria-hidden="true"></i>
+                    Индивидуальный подход и приватность
+                    </div>
+                    <div class="rich-text"><p>Наша миссия – предоставление высококачественного европейского медицинского и оздоровительного сервиса. Центр не рассчитан на поточный метод работы, мы предоставляем исключительно персонализированную медицинскую помощь. Сочетание высокотехнологичных методов лечения с опытом квалифицированных специалистов, стройной системой последовательности процедур и обязательной предварительной диагностикой позволяет компактно оптимизировать посещения пациента. Консультации со специалистами не имеют ограничений по времени.</p></div>
+                </div>
+                <div class="col-md-4 col-xs-12 inner-bl">
+                    <div class="head-gr im2">
+                        <div class="head-cov">
+                   <i class="fa fa-plus fa-2x" aria-hidden="true"></i>
+                    Безопасность лечения
+                    </div>
+                    </div>
+                    <div class="rich-text"><p>Безопасность лечения в настоящее время не менее важна, чем качество и безболезненность. В Центре процесс стерилизации организован в соответствии с высокими стандартами стерилизации ЕМS, принятыми в США. Клиника располагает отдельным стерилизационным блоком с 5-ти ступенчатой обработкой. Все инструменты подаются только в одноразовой стерильной упаковке и распечатываются только в присутствии пациента.</p></div>
+                </div>
+                <div class="col-md-4 col-xs-12 inner-bl">
+                    <div class="head-gr im3">
+                    <i class="fa fa-plus fa-2x" aria-hidden="true"></i>
+                    Оснащение по последнему слову техники
+                    </div>
+                    <div class="rich-text"><p>Особая гордость клиники – суперсовременный операционный блок с подачей очищенного воздуха, оборудованием новейшего поколения и собственной стерилизационной станцией, а также оснащенные по последнему слову техники хирургические кабинеты с оборудованием для общего обезболивания. Все это позволяет выполнять операции любых объемов и сложности по имплантации и наращиванию костной ткани, как под местной анестезией.</p></div>
+                </div>
+                </div>
+                </div>
+        </div>
+        <!-- /.row -->
+        <!-- Service Tabs -->
+        <div class="row service-tabs">
+            <div class="container">
+
+            <div class="col-lg-12">
+
+                <ul id="myTab" class="nav nav-tabs nav-justified">
+                    <li class=""><a href="#service-two" data-toggle="tab"> Отзывы клиентов</a>
+                    </li>
+                    <li class="active"><a href="#service-three" data-toggle="tab"> Записаться на прием</a>
+                    </li>
+                </ul>
+
+                <div id="myTabContent" class="tab-content">
+                    <div class="tab-pane fade" id="service-one">
+
+<div class="row">
+<div class="col-md-12">
+<div>
+{% if page.categories %}
+                        {% with categories=page.categories.all %}
+    {% if categories %}
+        {% for category in categories %}
+<div class="accordion-type-2">
+<div class="item wti" id="bx_3218110189_236">
+<div class="accordion-head" data-toggle="collapse" data-parent="#accordion" href="#accordion{{ forloop.counter }}_">
+<a href="#">{{ category.name }}<i class="fa fa-angle-down"></i></a>
+<div class="price-pay">
+Цена&nbsp;<b>от 500 р.</b>
+	</div>
+	</div>
+<div id="accordion{{ forloop.counter }}_" class="panel-collapse {% if forloop.first %}in {% else %}collapse{% endif %}">
+	<div class="accordion-body">
+		<div class="row">
+	<div class="col-md-12">
+<div class="accordion-body">
+<table class="table table-striped">
+											<thead>
+											<tr><th>Услуга</th><th>Стоимость</th></tr>
+											</thead>
+											<tbody>
+                                            {% for one in category.items.all %}
+																							<tr>
+													<td>{{ one.name }}</td>
+													<td>{{ one.price }}</td>
+												</tr>
+                                                {% endfor %}
+											</tbody>
+										</table>
+									</div>
+
+								</div>
+																											</div>
+												</div>
+											</div>
+										</div>
+									</div>
+{% endfor %}
+{% endif %}
+{% endwith %}
+                    {% endif %}
+</div>
+   </div>
+    </div>
+  </div>
+                    <div class="tab-pane fade" id="service-two">
+
+                        {% testy_in_tab %}
+
+
+
+<!---------------ФОРМА---------------------------->
+                        <div class="row form-otziv">
+{% feedback5 %}
+
+                        </div>
+                    </div>
+                    <div class="tab-pane fade active in" id="service-three">
+
+                        <!----Form for contact---->
+        <div class="row form-connect">
+     <div class="">
+          <div class="col-md-4 col-sx-12 contact-img">
+             <img class="img-responsive customer-img" src="{% static "rost/images/doctor-consultant.png" %}" alt="">
+         </div>
+         <div class="col-md-8 col-sx-12 contact-block">
+         {% feedback4 %}
+                </div>
+             </div>
+
+     </div>
+<!-- Modal -->
+{% include "partials/private-information.html" %}
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+</div>
+    </div>
+{% endblock %}

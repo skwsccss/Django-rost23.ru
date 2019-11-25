@@ -1,0 +1,150 @@
+{% load static main_tags form_tags %}
+<nav class="navbar primary navbar-static-top navbar-inverse" role="navigation">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="menubt">МЕНЮ</span>
+                    <!--<span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>--->
+                </button>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+<div class="collapse navbar-collapse js-navbar-collapse" id="bs-example-navbar-collapse-1">
+ <ul class="nav navbar-nav">
+ <li class="dropdown mega-dropdown">
+ <a href="#" class="dropdown-toggle" data-toggle="dropdown">Услуги <i class="fa fa-angle-double-down" aria-hidden="true"></i></a>
+
+ <ul class="dropdown-menu mega-dropdown-menu row animated fadeInUp">
+ <li class="col-sm-3 otziv-menu">
+ <ul>
+ <div id="myCarousel" class="carousel slide" data-ride="carousel">
+ <div class="carousel-inner">
+ {% testy_carousel %}
+ <!-- End Item -->
+ </div>
+ <!-- End Carousel Inner -->
+ </div>
+ <!-- /.carousel -->
+ <li class="divider"></li>
+ <li><a href="/testimonials/">Все отзывы <span class="glyphicon glyphicon-chevron-right pull-right"></span></a></li>
+ </ul>
+ </li>
+ <li class="col-sm-3">
+ <ul>
+ <li class="dropdown-header"><a href="/all-services/terapevticheskaya-stomatologia/">Терапевтическая стоматология</li>
+ <li><a href="/all-services/terapevticheskaya-stomatologia/plombirovanie-kornevih-kanalov-bee-fill/">Пломбирование корневых каналов Bee Fill</a></li>
+ <li><a href="/all-services/terapevticheskaya-stomatologia/vosstanovitelnie-vkladki/">Восстановительные вкладки</a></li>
+ <li><a href="/all-services/terapevticheskaya-stomatologia/hudojestvennaya-restavratsia-zubov/">Художественная реставрация зубов</a></li>
+ <li><a href="/all-services/terapevticheskaya-stomatologia/lechenie-zubov-vo-vremya-beremennost/">Лечение зубов во время беременности</a></li>
+ <li><a href="/all-services/terapevticheskaya-stomatologia/perelechivanie-kornevih-kanalov-zubov/">Перелечивание корневых каналов зубов</a></li>
+ <li><a href="/all-services/terapevticheskaya-stomatologia/lechenie-zubov-s-trudnoprohodimimy-kanalami/">Лечение зубов с труднопроходимыми каналами</a></li>
+ <li><a href="/all-services/terapevticheskaya-stomatologia/lechenie-periodontita/">Лечение периодонтита</a></li>
+ <li><a href="/all-services/terapevticheskaya-stomatologia/lechenie-pulpita/">Лечение пульпита</a></li>
+ <li><a href="/all-services/terapevticheskaya-stomatologia/parodontoz/">Лечение пародонтоза</a></li>
+ <li><a href="/all-services/terapevticheskaya-stomatologia/gerpes-polosti-rta/">Герпес полости рта</a></li>
+ <li><a href="/all-services/terapevticheskaya-stomatologia/gingivit/">Гингивит, воспаление десен</a></li>
+ <li><a href="/all-services/terapevticheskaya-stomatologia/lechenie-kariesa/">Лечение кариеса зубов</a></li>
+ <li><a href="/all-services/terapevticheskaya-stomatologia/anestezia/">Анестезия</a></li>
+ <li><a href="/all-services/terapevticheskaya-stomatologia/rentgenografia/">Рентген диагностика в стоматологии</a></li>
+ <li class="divider"></li>
+ <li class="dropdown-header"><a href="/all-services/protezirovanie-zubov/">Протезирование зубов</a></li>
+ <li><a href="/all-services/protezirovanie-zubov/protezirovanie-pri-otsutstviy-zubov/">Протезирование при полном отсутствии зубов</a></li>
+ <li><a href="/all-services/protezirovanie-zubov/bugelnie-protezy/">Бюгельные протезы</a></li>
+ <li><a href="/all-services/protezirovanie-zubov/neylonovie-protezy/">Нейлоновые протезы</a></li>
+ <li><a href="/all-services/protezirovanie-zubov/syemnie-plastmassovie-protezy/">Съемные пластмассовые протезы</a></li>
+ <li><a href="/all-services/protezirovanie-zubov/mikroprotezy/">Микропротезы (1-2 зуба)</a></li>
+ <li><a href="/all-services/protezirovanie-zubov/vremennie-plastmastmasovie-koronky/">Временные пластмассовые коронки</a></li>
+ <li><a href="/all-services/protezirovanie-zubov/protezirovanie-na-implantah/">Протезирование с опорой на имплантаты</a></li>
+ <li><a href="/all-services/protezirovanie-zubov/luminiry/">Люминиры</a></li>
+ <li><a href="/all-services/protezirovanie-zubov/metallicheskie-koronki/">Металлические коронки</a></li>
+ <li><a href="/all-services/protezirovanie-zubov/zirkonievie-koronky/">Циркониевые коронки</a></li>
+ <li><a href="/all-services/protezirovanie-zubov/metallokeramika/">Металлокерамические коронки</a></li>
+ </ul>
+ </li>
+ <li class="col-sm-3">
+ <ul>
+ <li class="dropdown-header"><a href="/all-services/implantazia-zubov/"> Имплантация дентальная</a></li>
+ <li><a href="/all-services/implantazia-zubov/kostnaya-plastika/">Костная пластика</a></li>
+ <li><a href="/all-services/implantazia-zubov/implanti-nobelbiocare/">Имплантаты Nobel Biocare</a></li>
+ <li><a href="/all-services/implantazia-zubov/sinus-lifting/">Синус-лифтинг</a></li>
+ <li><a href="/all-services/implantazia-zubov/all-on-4/">Зубы за один день All-ON-4</a></li>
+ <li><a href="/all-services/implantazia-zubov/odnomomentnaya-implantazia/">Одномоментная имплантация зубов</a></li>
+ <li><a href="/all-services/implantazia-zubov/express-implantazia/">Экспресс имплантация</a></li>
+ <li class="divider"></li>
+ <li class="dropdown-header"><a href="/all-services/ortodontia-ispravlenie-prikusa/">Ортодонтия (исправление прикуса)</a></li>
+ <li><a href="/all-services/ortodontia-ispravlenie-prikusa/siemnie-plastinki/">Съемные аппараты для исправления прикуса (пластинки)</a></li>
+ <li><a href="/all-services/ortodontia-ispravlenie-prikusa/lingvalnie-brekety/">Лингвальные брекеты</a></li>
+ <li><a href="/all-services/ortodontia-ispravlenie-prikusa/metallicheskie-brekety/">Металлические брекеты</a></li>
+ <li><a href="/all-services/ortodontia-ispravlenie-prikusa/keramicheskie-brekety/">Керамические брекеты</a></li>
+  <li><a href="/all-services/ortodontia-ispravlenie-prikusa/sapfirovie-brekety/">Сапфировые брекеты</a></li>
+   <li><a href="/all-services/ortodontia-ispravlenie-prikusa/ispravlenie-prikusa-kapamy/">Исправление прикуса каппами</a></li>
+    <li><a href="/all-services/ortodontia-ispravlenie-prikusa/hirurgicheskoe-ispravlenie-prikusa/">Хирургическое исправление прикуса</a></li>
+ <li class="divider"></li>
+ <li class="dropdown-header"><a href="/all-services/hirurgicheskaya-stomatologia/">Хирургическая стоматология</a></li>
+ <li><a href="/all-services/hirurgicheskaya-stomatologia/lasernaya-stomatologia/">Лазерная стоматология</a></li>
+ <li><a href="/all-services/hirurgicheskaya-stomatologia/lechenie-periostita/">Лечение периостита (флюса)</a></li>
+ <li><a href="/all-services/hirurgicheskaya-stomatologia/lechenie-odontogennogo-gaimorita/">Лечение одонтогенного гайморита</a></li>
+ <li><a href="/all-services/hirurgicheskaya-stomatologia/udalenie-kist/">Удаление кист и гранулем</a></li>
+ <li><a href="/all-services/hirurgicheskaya-stomatologia/udalenie-zubov-mudrosty/">Удаление зубов «мудрости»</a></li>
+ <li><a href="/all-services/hirurgicheskaya-stomatologia/udalenie-zubov/">Удаление зубов</a></li>
+  <li class="divider"></li>
+  <li class="dropdown-header"><a href="/all-services/viniry/">Виниры</a></li>
+ </ul>
+ </li>
+ <li class="col-sm-3">
+ <ul>
+ <li class="dropdown-header"><a href="/all-services/professionalnaya-gigiena/">Профессиональная гигиена</a></li>
+ <li><a href="/all-services/professionalnaya-gigiena/professionalnaya-gigiena-zubov/">Профессиональная гигиена</a></li>
+ <li><a href="/all-services/professionalnaya-gigiena/ftorirovanie-zubov/">Фторирование зубов</a></li>
+ <li><a href="/all-services/professionalnaya-gigiena/polirovka-pastoy/">Полировка пастой</a></li>
+ <li><a href="/all-services/professionalnaya-gigiena/udalenie-zubnogo-kamnya/">Удаление зубного камня</a></li>
+ <li><a href="/all-services/professionalnaya-gigiena/ultrazvukovaya-chistka/">Ультразвуковая чистка</a></li>
+ <li class="divider"></li>
+ <li class="dropdown-header"><a href="/all-services/otbelivanie-zubov/">Отбеливание зубов</li>
+ <li><a href="/all-services/otbelivanie-zubov/otbelivanie-opalescence-extraboost/">Кабинетное отбеливание Opalescence EXTRABOOST</a></li>
+ <li><a href="/all-services/otbelivanie-zubov/vnutrikanalnoe-otbelivanie/">Внутриканальное отбеливание</a></li>
+ <li class="divider"></li>
+ <li class="dropdown-header"><a href="/all-services/detskaya-stomatologya/">Детская стоматология</a></li>
+ <li><a href="/all-services/detskaya-stomatologya/lechenie-molochnih-zubov/">Лечение молочных зубов</a></li>
+ <li><a href="/all-services/detskaya-stomatologya/vosstanovlenie-molochnih-zubov/">Восстановление молочных зубов</a></li>
+ <li><a href="/all-services/detskaya-stomatologya/profilaktika-kariesa/">Профилактика кариеса у ребенка</a></li>
+ <li><a href="/all-services/detskaya-stomatologya/ispravlenie-prikusa/">Исправление прикуса и дефектов зубов</a></li>
+ <li class="divider"></li>
+{% feedback6 %}
+ </ul>
+ </li>
+ </ul>
+
+ </li>
+  <li>
+ <a href="/about/">О клинике</a>
+ </li>
+
+ <li>
+ <a href="/specialist/">Сотрудники</a>
+ </li>
+  <li>
+ <a href="/works/">Наши работы</a>
+ </li>
+  <li>
+ <a href="/testimonials/">Отзывы</a>
+ </li>
+  <li>
+ <a href="/news/">Акции</a>
+ </li>
+  <li>
+ <a href="/price/">Прайс-лист</a>
+ </li>
+  <li>
+ <a href="/contact/">Контакты</a>
+ </li>
+ </ul>
+
+ </div>
+ <!-- /.nav-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>

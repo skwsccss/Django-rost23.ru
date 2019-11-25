@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+{% load wagtailcore_tags form_tags %}
+{% block extra_styles %}
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+{% endblock %}
+{% block extra_scripts %}
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script>
+  $( function() {
+    $( "#datepicker" ).datepicker();
+  } );
+  </script>
+{% endblock %}
+{% block content %}
+ <div class="container-fluid">
+
+        <!-- Page Heading/Breadcrumbs -->
+        <div class="row">
+            <div class="parallax">
+                <div class="container">
+                 <h1 class="page-header">Контакты
+                </h1>
+                     <ol class="breadcrumb">
+                    <li><a href="/">Главная</a>
+                    </li>
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                    <li class="active">Контакты</li>
+                </ol>
+                </div>
+            </div>
+
+        </div>
+        <!-- /.row -->
+
+
+       <!----Form for contact---->
+        <div class="row form-connect">
+     <div class="container">
+          <div class="col-md-4 col-sx-12 contact-img">
+              <div class="contact-bl">
+              <h3>Контактная информация</h3>
+                <p>
+                <i class="fa fa-map-marker"></i>
+                    г. Краснодар, микрорайон Гидростроителей, <br>проспект писателя Знаменского, 10<br>
+                </p>
+                <p><i class="fa fa-phone"></i>
+                    <span id="tele4"><a href="tel:88003503074">8 (800) 350 30 74</a></span></p>
+                <p><i class="fa fa-envelope-o"></i>
+                    <a href="mailto:23.rost@mail.ru">23.rost@mail.ru</a>
+                </p>
+                </div>
+              <div class="contact-bl">
+                 <h3>Режим работы</h3>
+                <p><i class="fa fa-clock-o"></i>
+                    Пн-Пт с 09:00 до 20:00,<br>
+                    Сб с 09:00 до 16:00<br>
+                    Вс с 09:00 до 16:00</p>
+                <!-- <h3>График работы в праздничные дни:</h3>
+                <p>
+                  До 29.12 в обычном режиме<br>
+                  31.12, 1.01, 2.01 - выходные дни.<br>
+                  3,4,5 января - дежурный доктор<br>
+                  6,7.01 - выходной день<br>
+                  С 8.01 в обычном режиме<br>
+                  </p> -->
+                </div>
+                <div class="contact-bl">
+                <h3>Как проехать на общественном транспорте</h3>
+                <p><i class="fa fa-car"></i>
+                    Автобусы 28 и 2<br>
+                    Маршрутки 35, 93, 39, 37 и 41</p>
+                </div>
+         </div>
+         <div class="col-md-8 col-sx-12 contact-block">
+         {% feedback4  %}
+
+                </div>
+             </div>
+
+     </div>
+        <!-- Modal -->
+{% include "partials/private-information.html" %}
+        </div>
+        <!-- /.row -->
+        <div class="map-main row">
+        <script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A0426c67b3f1125d1616b47d51552291213d97225033a6ac6134da4f26f9b13e6&amp;width=100%25&amp;height=500&amp;lang=ru_RU&amp;scroll=false"></script>
+        </div>
+
+{% endblock %}

@@ -1,0 +1,107 @@
+
+                        <h2>Оставить отзыв</h2>
+                       
+                        <form class="form" role="form" action="{% url 'messform' %}" method="post" id="feedback5">
+                            {% csrf_token %}
+            <div class="col-lg-6 col-sm-12" style="padding-right: 4px">
+            <div class="control-group form-group">
+            <label class="sr-only" for="name">Имя</label>
+            {{ form4.name }}
+            </div>
+            </div>
+            <div class="col-lg-6 col-sm-12" style="padding-left: 4px">
+            <div class="control-group form-group">
+            <label class="sr-only" for="phone">Телефон</label>
+            {{ form4.phone }}
+            </div>
+            </div>
+                             <div class="col-lg-12" style="    padding-left: 0px;
+    padding-right: 0px;">
+            <div class="control-group form-group">
+            <label class="sr-only" for="phone">Телефон</label>
+                {{ form4.message  }}
+            </div>
+            </div>
+            <label>
+                    <input class="checkbox" type="checkbox" name="checkbox-test" checked="" id="check_feed5">
+                    <span class="checkbox-custom"></span>
+                    <span class="label"><a href="#" data-toggle="modal" data-target="#agreementModal">Согласие на обработку персональных данных</a></span>
+                </label>
+
+            <button type="submit" class="btn btn-primary" id="subb5">Оставить отзыв <i class="fa fa-angle-double-right" aria-hidden="true"></i></button>
+            </form>
+ <p style="color:red; text-align: center" id="err5"></p>
+        <p style="color:dodgerblue; text-align: center; font-size: x-large" id="confirm5"></p>
+<script>
+
+ function getCookie(name) {
+        var cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            var cookies = document.cookie.split(';');
+            for (var i = 0; i < cookies.length; i++) {
+                var cookie = jQuery.trim(cookies[i]);
+                // Does this cookie string begin with the name we want?
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+ function csrfSafeMethod(method) {
+    // these HTTP methods do not require CSRF protection
+    return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+}
+
+
+    $(function(){
+
+       $('#subb5').click(function(event){
+
+           event.preventDefault();
+           var csrftoken = getCookie('csrftoken');
+
+           var $feedback_form = $('#feedback5');
+
+           var namecb1 = $('#fname5').val();
+           var phonecb1 = $('#fphone5').val();
+           var time = $('#ftime5').val();
+           var message = $('#fmess5').val();
+           var chbox1 = document.getElementById('check_feed5');
+
+           var flag = true;
+           if(!chbox1.checked){
+
+               $('#err5').append('Необходимо согласие на обработку персональных данных<br>');
+               flag = false;
+           }
+           if(namecb1 ===''){
+
+               $('#err5').append('Необходимо заполнить поле Имя<br>');
+               flag = false;
+           }
+           if(phonecb1 ===''){
+                         event.preventDefault();
+               $('#err5').append('Необходимо заполнить поле Телефон<br>');
+               flag = false;
+           }
+               if(flag){
+
+           $.ajax({
+               beforeSend: function(xhr, settings) {
+        if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+            xhr.setRequestHeader("X-CSRFToken", csrftoken);
+            }
+        },
+            method: 'post',
+            url: $feedback_form.attr('action'),
+            data: $feedback_form.serialize(),
+
+        });
+        $('#confirm5').append('Ваше сообщение успешно отправлено!<br>');
+        $feedback_form.addClass("hidden");
+       }
+       });
+    });
+</script>

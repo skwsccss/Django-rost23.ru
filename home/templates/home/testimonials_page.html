@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+{% load wagtailcore_tags wagtailimages_tags %}
+{% block content %}
+<div class="container-fluid">
+
+       <!-- Page Heading/Breadcrumbs -->
+        <div class="row">
+            <div class="parallax">
+                <div class="container">
+                 <h1 class="page-header">Отзывы Клиентов
+                </h1>
+                     <ol class="breadcrumb">
+                    <li><a href="/">Главная</a>
+                    </li>
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                    <li class="active">Отзывы Клиентов</li>
+                </ol>
+                </div>
+            </div>
+
+        </div>
+        <!-- /.row -->
+
+        <div class="row">
+            <div class="container testimonials-row">
+        <!-- Projects Row -->
+{#            <div class="row">#}
+{#                {% for item in testimonial_images %}#}
+{#                    {% image item.image fill-500x300 as img%}#}
+{##}
+{#            <div class="col-md-4 img-portfolio">#}
+{##}
+{#                    <img class="img-responsive img-hover news-image center-block" src="{{ img.url }}" alt="">#}
+{##}
+{#               <h3>#}
+{#                    {{ item.name }}#}
+{#                </h3>#}
+{#                <p class="date">{{ item.date }}</p>#}
+{#{{ item.text|richtext }}#}
+{#            </div>#}
+{#            {% cycle '' '' '</div><div class="row">' %}#}
+{##}
+{#        <!-- /.row -->#}
+{#        {% endfor %}#}
+{# </div>#}
+{#        <hr>#}
+{##}
+{#        <!-- Pagination -->#}
+{#        <div class="row text-center">#}
+{#            <div class="col-lg-12">#}
+{#                <ul class="pagination">#}
+{#                {% if testimonial_images.has_previous %}#}
+{#      <li><a href="?page={{ testimonial_images.previous_page_number }}">Назад</a></li>#}
+{#    {% else %}#}
+{#      <li class="disabled"><span>Назад</span></li>#}
+{#    {% endif %}#}
+{#    {% for i in testimonial_images.paginator.page_range %}#}
+{#      {% if testimonial_images.number == i %}#}
+{#        <li class="active"><span>{{ i }} <span class="sr-only"></span></span></li>#}
+{#      {% else %}#}
+{#        <li><a href="?page={{ i }}">{{ i }}</a></li>#}
+{#      {% endif %}#}
+{#    {% endfor %}#}
+{#    {% if testimonial_images.has_next %}#}
+{#      <li><a href="?page={{ testimonial_images.next_page_number }}">Вперёд</a></li>#}
+{#    {% else %}#}
+{#      <li class="disabled"><span>Вперёд</span></li>#}
+{#    {% endif %}#}
+{#            </ul>#}
+{#            </div>#}
+{#        </div>#}
+{#        <!-- /.row -->#}
+
+      
+        
+    
+                <div id="pd_widget_big"  data-lpu="43907" style="margin: auto;">
+<div class="pd_rate_header">Написать отзыв о стоматологии «РОСТ»</div>
+
+<div class="pd_rate_choice pd_rate_simple pd_rate_selected">
+    <a href="#"><span class="pd_ratetype_name">Легкий</span><br><span class="pd_rate_time">3-5 мин.</span></a>
+</div><div class="pd_rate_choice pd_rate_detail">
+    <a href="#"><span class="pd_ratetype_name">Обычный</span><br><span class="pd_rate_time">10-20 мин.</span></a>
+</div>
+
+
+    <iframe src="https://prodoctorov.ru/newcomment/lpu/43907/?np&full" id="pd_rate"></iframe>
+
+<div id="pd_widget_big_content"></div>
+<a target="_blank" href="https://prodoctorov.ru/krasnodar/lpu/43907-rost/#otzivi" target="_blank" class="pd_read_all">читать все отзывы</a>
+
+<span id="pd_powered_by">powered by <a target="_blank" href="https://prodoctorov.ru"><img class='pd_logo' src="https://prodoctorov.ru/static/logo_widget.png"></a></span>
+</div>
+<script src="https://prodoctorov.ru/static/js/widget_big.js"></script>
+    
+            </div>
+        </div>
+    </div>
+{% endblock %}

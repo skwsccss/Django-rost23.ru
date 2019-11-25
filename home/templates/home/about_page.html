@@ -1,0 +1,210 @@
+{% extends 'base.html' %}
+{% load static wagtailcore_tags wagtailimages_tags %}
+{% load form_tags %}
+{% block extra_styles %}
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+{% endblock %}
+{#{% block jquery_top %}#}
+{#{% endblock %}#}
+
+{% block extra_scripts %}
+
+ <script src="{% static "rost/dist/js/lightbox-plus-jquery.min.js" %}"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script>
+  $( function() {
+    $( "#datepicker" ).datepicker();
+  } );
+  </script>
+{% endblock %}
+{% block content %}
+
+<div class="container-fluid">
+
+        <!-- Page Heading/Breadcrumbs -->
+        <div class="row">
+            <div class="parallax">
+                <div class="container">
+                 <h1 class="page-header">О стоматологии
+                </h1>
+                     <ol class="breadcrumb">
+                    <li><a href="/">Главная</a>
+                    </li>
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                    <li class="active">О стоматологии</li>
+                </ol>
+                </div>
+            </div>
+
+        </div>
+        <!-- /.row -->
+
+        <!-- Intro Content -->
+        <div class="row">
+            <div class="container">
+                <div class="row about-pg">
+                <div class="col-md-6">
+                {{ page.text_col1|richtext }}
+                </div>
+                <div class="col-md-6">
+                {{ page.text_col2|richtext }}
+                </div>
+             </div>
+             <div style="position:relative;padding-bottom:56.25%;padding-top:25px;height:0;margin-bottom:30px;text-align:center;">
+               <iframe src="https://vrt360.ru/images/stomatalogia/СтоматологияРост.html" width="700" height="540" >
+                  Ваш браузер не поддерживает плавающие фреймы!
+               </iframe>
+              </div>
+            <div class="col-md-12">
+
+                 <div id="carousel-example-generic" class="carousel slide carousel-fade carousel-animate carousel-bg" data-ride="carousel">
+ <!-- Indicators -->
+ <ul class="carousel-indicators">
+     {% if page.about_slider_images %}
+         {% for image in page.about_slider_images.all %}
+         <li data-target="#carousel-example-generic" data-slide-to="{{ forloop.counter0 }}"
+             class="{% if forloop.first %}active{% endif %}"></li>
+         {% endfor %}
+     {% endif %}
+ </ul>
+ <!-- Wrapper for slides -->
+ <div class="carousel-inner" role="listbox">
+{% if page.about_slider_images %}
+         {% for img in page.about_slider_images.all %}
+             {% image img.image width-1920 as slide %}
+              <div class="item {% if forloop.first %}active{% endif %}" style="background-image: url({{ slide.url }})">
+ <div class="carousel-caption">
+ <div class="hero {% if img.block_animation %}{{ img.block_animation }}{% endif %}
+{% if img.block_is_animated %}animated{% endif %}{% if img.block_is_infinite %}infinite{% endif %}" >
+ <hgroup>
+ <h1 class="{% if img.h1_animation %}{{ img.h1_animation }}{% endif %}
+{% if img.h1_is_animated %}animated{% endif %}{% if img.h1_is_infinite %}infinite{% endif %}">
+     {{ img.h1_name }}</h1>
+ <h3 class="{% if img.h3_animation %}{{ img.h3_animation }}{% endif %}
+{% if img.h3_is_animated %}animated{% endif %}{% if img.h3_is_infinite %}infinite{% endif %}">{{ img.h3_name }}</h3>
+ </hgroup>
+ </div>
+ </div>
+ </div>
+
+     {% endfor %}
+ {% endif %}
+ </div>
+ <!-- Controls -->
+ <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+ <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+ <span class="sr-only">Назад</span>
+ </a>
+ <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+ <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+ <span class="sr-only">Вперёд</span>
+ </a>
+ </div>
+
+            </div>
+
+        </div>
+            </div>
+        <!-- /.row -->
+<div class="row">
+    <div class="container advantages">
+         <div class="col-lg-12">
+                <h2 class="page-header">Наши Преимущества</h2>
+            </div>
+        <div class="row">
+        <div class="col-md-4 col-xs-12 inner-bl">
+            <div class="head-gr im1">
+            <i class="fa fa-plus fa-2x" aria-hidden="true"></i>
+            Индивидуальный подход и приватность
+            </div>
+            {{ page.point1|richtext }}
+        </div>
+        <div class="col-md-4 col-xs-12 inner-bl">
+            <div class="head-gr im2">
+                <div class="head-cov">
+           <i class="fa fa-plus fa-2x" aria-hidden="true"></i>
+            Безопасность лечения
+            </div>
+            </div>
+            {{ page.point2|richtext }}
+        </div>
+        <div class="col-md-4 col-xs-12 inner-bl">
+            <div class="head-gr im3">
+            <i class="fa fa-plus fa-2x" aria-hidden="true"></i>
+            Оснащение по последнему слову техники
+            </div>
+            {{ page.point3|richtext }}
+        </div>
+        </div>
+        <hr>
+        <!---<div class="row">
+        <div class="col-md-6 col-xs-12 inner-bl">
+            <div class="head-gr im4">
+            <i class="fa fa-plus fa-2x" aria-hidden="true"></i>
+            Экспресс-лаборатория и диагностика
+            </div>
+            {{ page.point4|richtext }}
+        </div>
+        <div class="col-md-6 col-xs-12 inner-bl">
+            <div class="head-gr im5">
+            <i class="fa fa-plus fa-2x" aria-hidden="true"></i>
+            Пожизненная гарантия
+            </div>
+            {{ page.point5|richtext }}
+        </div>
+            </div>--->
+    </div>
+</div>
+
+        <!-- Our License -->
+        <div class="row">
+            <div class="container">
+            <div class="col-lg-12">
+                <h2 class="page-header">Наши Лицензии</h2>
+            </div>
+ <div class="row">
+            <div class="col-sm-4 col-xs-6 lisence">
+                <a class="example-image-link" href="{% static "rost/dist/images/lis11.jpg" %}" data-lightbox="example-set" data-title="">
+                    <img class="border img-responsive example-image" src="{% static "rost/dist/images/lis11.jpg" %}" alt="" /></a>
+            </div>
+            <div class="col-sm-4 col-xs-6 lisence">
+                <a class="example-image-link" href="{% static "rost/dist/images/lis22.jpg" %}" data-lightbox="example-set" data-title=""><img class="border img-responsive example-image" src="{% static "rost/dist/images/lis22.jpg" %}" alt="" /></a>
+                </div>
+            <div class="col-sm-4 col-xs-6 lisence">
+                <a class="example-image-link" href="{% static "rost/dist/images/lis33.jpg" %}" data-lightbox="example-set" data-title=""><img class="border img-responsive example-image" src="{% static "rost/dist/images/lis3.jpg" %}" alt=""/></a>
+            </div>
+            </div>
+            <div class="row">
+            <div class="col-sm-4 col-xs-6 lisence">
+                <a class="example-image-link" href="{% static "rost/dist/images/lis4.jpg" %}" data-lightbox="example-set" data-title="">
+                    <img class="border img-responsive example-image" src="{% static "rost/dist/images/lis4.jpg" %}" alt="" /></a>
+            </div>
+            <div class="col-sm-4 col-xs-6 lisence">
+                <a class="example-image-link" href="{% static "rost/dist/images/lis5.jpg" %}" data-lightbox="example-set" data-title=""><img class="border img-responsive example-image" src="{% static "rost/dist/images/lis5.jpg" %}" alt="" /></a>
+                </div>
+            <div class="col-sm-4 col-xs-6 lisence">
+                <a class="example-image-link" href="{% static "rost/dist/images/lis6.jpg" %}" data-lightbox="example-set" data-title=""><img class="border img-responsive example-image" src="{% static "rost/dist/images/lis6.jpg" %}" alt=""/></a>
+            </div>
+            </div>
+            </div>
+        </div>
+            
+        <!-- /.row -->
+<!----Form for contact---->
+
+<div class="mb-3"></div>
+<div class="row form-connect">
+     <div class="container">
+          <div class="col-md-4 col-sx-12 contact-img">
+             <img class="img-responsive customer-img" src="{% static "rost/images/doctor-consultant.png" %}" alt="">
+         </div>
+         <div class="col-md-8 col-sx-12 contact-block">
+             {% feedback4 %}
+              </div>
+     </div>
+</div>
+
+<!-- Modal -->
+{% include "partials/private-information.html" %}
+        </div>
+{% endblock content %}

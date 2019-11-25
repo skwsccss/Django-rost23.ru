@@ -1,0 +1,18 @@
+<li class="dropdown-header">Записаться на прием</li>
+ <form class="form" role="form" action="{% url 'menuform' %}" method="post" id="feedback6">
+     {% csrf_token %}
+ <div class="control-group form-group">
+ <label class="sr-only" for="name">Имя</label>
+ {{ form5.name }}
+ </div>
+ <div class="control-group form-group">
+ <label class="sr-only" for="email">E-mail адрес</label>
+ {{ form5.email }}
+ </div>
+ <div class="control-group form-group">
+ <label class="sr-only" for="phone">Телефон</label>
+ {{ form5.phone }}
+ </div>
+ <button type="submit" class="btn btn-primary btn-block" id="subb6">Записаться</button>
+ </form>
+

@@ -1,0 +1,45 @@
+{% load static %}
+{% load form_tags %}
+<header>
+        <div class="header row">
+            <div class="container">
+            <div class="col-md-2 col-sm-3">
+            <div class="logotip">
+            <a href="/"><img src="{% static "rost/images/logo.png" %}" alt="Стоматологическая клиника - Рост" title="Стоматологическая клиника - Рост"></a>
+            </div>
+            </div>
+                <div class="col-md-10 col-sm-9 col-xs-12 info-block">
+		<div class="top-description col-md-6 hidden-sm hidden-xs">
+		<p>Стоматологический</p>
+                <p><span>центр в Краснодаре</span></p>
+                </div>
+		<div class="top-callback col-md-6">
+
+				<div class="phone pull-right">
+                                    <div class="phone-desc hidden-xs">
+                                        <i class="fa fa-map-marker"></i>
+                                        <span><b>Адрес:</b></span> проспект писателя Знаменского, 10
+					</div>
+                        <div class="row callback-phone">
+				<div class="phone-number col-md-6">
+                                        <div><a href="tel:88003503074" title="Номер телефона стоматологии Рост" itemprop="telephone" rel="nofollow"><span id="tele1">8 800 350-30-74
+                                        </span></a><p class="hidden-xs">(звонок бесплатный)</p></div>
+				</div>
+                        <div class="callback pull-right hidden-xs col-md-6" data-event="jqm" data-param-id="24" data-name="callback">
+                            <span href="javascript:;" class="btn btn-default white btn-xs" data-toggle="modal" data-target="#callBackModal">Заказать звонок <i class="fa fa-angle-double-right" aria-hidden="true"></i></span>
+			</div>
+			</div>
+                                    <!-- Modal -->
+{% feedback3 %}
+                       <!--
+			<div class="email pull-right">
+			<i class="fa fa-envelope"></i>
+			<div><a href="mailto:23.rost@mail.ru" title="Электронная почта стоматологии Рост" itemprop="email" rel="nofollow">23.rost@mail.ru</a></div>
+			</div>
+                         --->
+
+								</div>
+							</div>
+            </div>
+            </div></div>
+    </header>

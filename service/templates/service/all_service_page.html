@@ -1,0 +1,180 @@
+{% extends 'base.html' %}
+{% load form_tags static wagtailcore_tags wagtailimages_tags main_tags %}
+{% block extra_styles %}
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+{% endblock %}
+{% block extra_scripts %}
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script>
+  $( function() {
+    $( "#datepicker" ).datepicker();
+  } );
+  </script>
+{% endblock %}
+{% block content %}
+<div class="container-fluid">
+
+       <!-- Page Heading/Breadcrumbs -->
+        <div class="row">
+            <div class="parallax">
+                <div class="container">
+                 <h1 class="page-header">Все услуги
+                </h1>
+                     <ol class="breadcrumb">
+                    <li><a href="/">Главная</a>
+                    </li>
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                    <li class="active">Все услуги</li>
+                </ol>
+                </div>
+            </div>
+
+        </div>
+        <!-- /.row -->
+
+        <!-- Image Header -->
+        <div class="row service-block">
+            <div class="container">
+
+                </div>
+        </div>
+        <!-- /.row -->
+
+        <!-- Service Panels -->
+        <!-- The circle icons use Font Awesome's stacked icon classes. For more information, visit http://fontawesome.io/examples/ -->
+        <div class="row">
+
+             <div class="container services-row">
+
+
+
+        </div>
+         <!-- The circle icons use Font Awesome's stacked icon classes. For more information, visit http://fontawesome.io/examples/ -->
+        <div class="row">
+             <div class="container services-row">
+{% for item in page.get_children %}
+    {% image item.specific.image fill-200x200 as img%}
+            <div class="col-md-3 col-sm-6">
+                <div class="panel panel-default text-center">
+                    <div class="panel-heading">
+                        <image class="img-responsive" src="{{ img.url }}"
+                               alt="удаление зубов мудрости"/>
+                    </div>
+                    <div class="panel-body slideInDown
+animated">
+                        <h4>{{ item.title }}</h4>
+                        <!--{{ item.specific.text|truncatewords_html:5|richtext}}-->
+                        <a href="{% pageurl item %}" class="btn btn-primary">Подробнее <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
+                    </div>
+                </div>
+            </div>
+{% cycle '' '' '' '</div></div><div class="row"><div class="container services-row">' %}
+{% endfor %}
+
+        </div>
+        </div>
+
+        <!-- Service Tabs -->
+        <div class="row service-tabs">
+            <div class="container">
+
+            <div class="col-lg-12">
+
+                <ul id="myTab" class="nav nav-tabs nav-justified">
+                    <!-- <li class="active"><a href="#service-one" data-toggle="tab"> Стоимость работ</a>
+                    </li>--->
+                   <li class=""><a href="#service-two" data-toggle="tab"> Отзывы клиентов</a
+                    </li>
+                    <li class="active"><a href="#service-three" data-toggle="tab"> Записаться на прием</a>
+                    </li>
+                </ul>
+
+                <div id="myTabContent" class="tab-content">
+                    <!--<div class="tab-pane fade active in" id="service-one">
+
+<div class="row">
+<div class="col-md-12">
+<div>
+{% if page.categories %}
+                        {% with categories=page.categories.all %}
+    {% if categories %}
+        {% for category in categories %}
+<div class="accordion-type-2">
+<div class="item wti" id="bx_3218110189_236">
+<div class="accordion-head" data-toggle="collapse" data-parent="#accordion" href="#accordion{{ forloop.counter }}_">
+<a href="#">{{ category.name }}<i class="fa fa-angle-down"></i></a>
+<div class="price-pay">
+Цена&nbsp;<b>от 500 р.</b>
+	</div>
+	</div>
+<div id="accordion{{ forloop.counter }}_" class="panel-collapse {% if forloop.first %}in {% else %}collapse{% endif %}">
+	<div class="accordion-body">
+		<div class="row">
+	<div class="col-md-12">
+<div class="accordion-body">
+<table class="table table-striped">
+											<thead>
+											<tr><th>Услуга</th><th>Стоимость</th></tr>
+											</thead>
+											<tbody>
+                                            {% for one in category.items.all %}
+																							<tr>
+													<td>{{ one.name }}</td>
+													<td>{{ one.price }}</td>
+												</tr>
+                                                {% endfor %}
+											</tbody>
+										</table>
+									</div>
+
+								</div>
+																											</div>
+												</div>
+											</div>
+										</div>
+									</div>
+{% endfor %}
+{% endif %}
+{% endwith %}
+                    {% endif %}
+</div>
+   </div>
+    </div>
+  </div>-->
+                    <div class="tab-pane fade " id="service-two">
+
+                        {% testy_in_tab %}
+
+                        <hr>
+
+<!---------------ФОРМА---------------------------->
+                        <div class="row form-otziv">
+{% feedback5 %}
+
+                        </div>
+                    </div>
+                    <div class="tab-pane fade active in" id="service-three">
+
+                        <!----Form for contact---->
+        <div class="row form-connect">
+     <div class="container">
+          <div class="col-md-4 col-sx-12 contact-img">
+             <img class="img-responsive customer-img" src="{% static "rost/images/doctor-consultant.png" %}" alt="">
+         </div>
+         <div class="col-md-8 col-sx-12 contact-block">
+         {% feedback4 %}
+                </div>
+             </div>
+
+     </div>
+<!-- Modal -->
+{% include "partials/private-information.html" %}
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+</div>
+    </div>
+{% endblock %}
